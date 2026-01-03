@@ -1,0 +1,20 @@
+{
+  "name": "a",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write .",
+    "lint": "oxlint --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@10.19.0",
+  "devDependencies": {
+    "oxlint": "^1.36.0",
+    "prettier": "^3.7.4"
+  },
+  "private": true
+}
