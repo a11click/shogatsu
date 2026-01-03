@@ -49,7 +49,6 @@ const io = new Server<
   InterServerEvents,
   SocketData
 >(httpServer, {
-  path:"/api/socket.io/",
   cors: {
     origin: CLIENT_ORIGIN,
     credentials: true,
