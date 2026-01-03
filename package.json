@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write .",
-    "lint": "oxlint --fix"
+    "lint": "oxlint --fix",
+    "build": "pnpm --filter vite-project build && pnpm --filter server build",
+    "build:render": "pnpm --filter vite-project build && pnpm --filter server install && mkdir -p server/public && cp -r client/dist/* server/public"
   },
   "keywords": [],
   "author": "",

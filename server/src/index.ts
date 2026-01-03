@@ -24,6 +24,19 @@ import {
 } from "./mochi.js";
 import { CLIENT_ORIGIN, JWT_SECRET, PORT, tokenSchema } from "./schema.js";
 import { verify } from "hono/jwt";
+import { serveStatic } from "@hono/node-server/serve-static";
+import { readFile } from "fs/promises";
+
+app.use('/*', serveStatic({ root: './public' }))
+
+app.get('*', async (c) => {
+  try {
+    const html = await readFile('./public/index.html', 'utf-8')
+    return c.html(html)
+  } catch (e) {
+    return c.notFound()
+  }
+})
 
 const httpServer = serve({
   fetch: app.fetch,
