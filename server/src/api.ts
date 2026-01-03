@@ -26,7 +26,7 @@ export const app = new Hono()
   )
 
   .delete(
-    "/api//auth/role",
+    "/api/auth/role",
     jwt({ secret: JWT_SECRET, cookie: "room_id" }),
     async (c) => {
       deleteCookie(c, "room_id");
