@@ -1,19 +1,19 @@
 import { ClockIcon } from "@heroicons/react/24/outline";
 import type { Room, Role } from "server/src/room";
 import { useState, useEffect } from "react";
-import PlayerJoinLink from "../copy-button";
+import Open from "./open";
 import MochiImg from "../mochi-img";
 import ResultView from "./finished";
-import ReadyButton from "./ready";
+import Ready from "./ready";
 import PlayButtonPanel from "../mochitsuki-button";
 
 const ActionPanel: React.FC<{ room: Room; role: Role }> = ({ room, role }) => {
   switch (room.status) {
     case "open":
-      return <PlayerJoinLink roomId={room.id} />;
+      return <Open roomId={room.id} />;
 
     case "ready":
-      return <ReadyButton isReady={room.players[role].isReady} />;
+      return <Ready isReady={room.players[role].isReady} />;
 
     case "playing":
       return null;
@@ -95,18 +95,17 @@ const GameHeader: React.FC<{ room: Room }> = ({ room }) => {
 
   return (
     <header className="mb-8">
-      <div className="flex items-center justify-center mb-6 text-xl font-bold">
+      <div className="mb-6 flex items-center justify-center text-xl font-bold">
         <div className="flex items-center gap-x-6">
           <GameTimer room={room} />
           <p className="flex items-baseline gap-x-1">
-            {" "}
             <span>あと</span>
             <span className="text-2xl"> {displayCount} </span>
             <span>回</span>
           </p>
         </div>
       </div>
-      <p className="text-center text-gray-600 min-h-6">{displayMessage}</p>
+      <p className="min-h-6 text-center text-gray-600">{displayMessage}</p>
     </header>
   );
 };
@@ -116,23 +115,22 @@ export const GameScreen: React.FC<{ room: Room; role: Role }> = ({
   role,
 }) => {
   return (
-  <div className="w-full h-full flex flex-col gap-y-8 min-h-dvh py-8">
-     
-          <GameHeader room={room} />
+    <div className="flex h-full min-h-dvh w-full flex-col gap-y-8 py-8">
+      <GameHeader room={room} />
 
-          {room.status === "playing" ? (
-            <MochiImg mochi={room.mochi} />
-          ) : (
-            <img src="/mochi.png" className="mx-auto w-1/3" />
-          )}
+      {room.status === "playing" ? (
+        <MochiImg mochi={room.mochi} />
+      ) : (
+        <img src="/mochi.png" className="mx-auto w-1/3" />
+      )}
 
-        <div className="mt-auto">
-          {room.status === "playing" ? (
-            <PlayButtonPanel room={room} role={role} />
-          ) : (
-            <ActionPanel room={room} role={role} />
-          )}
-        </div>
-      </div>
+      <section className="mt-auto">
+        {room.status === "playing" ? (
+          <PlayButtonPanel room={room} role={role} />
+        ) : (
+          <ActionPanel room={room} role={role} />
+        )}
+      </section>
+    </div>
   );
 };

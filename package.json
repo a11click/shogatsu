@@ -16,7 +16,8 @@
   "packageManager": "pnpm@10.19.0",
   "devDependencies": {
     "oxlint": "^1.36.0",
-    "prettier": "^3.7.4"
+    "prettier": "^3.7.4",
+    "prettier-plugin-tailwindcss": "^0.7.2"
   },
   "private": true
 }

@@ -16,7 +16,7 @@ const Ready = ({ isReady }: ReadyButtonProps) => {
       className={clsx(
         isReady
           ? "bg-gray-300 text-gray-900"
-          : "text-white bg-red-700 hover:bg-red-600",
+          : "bg-red-700 text-white hover:bg-red-600",
       )}
     >
       準備OK

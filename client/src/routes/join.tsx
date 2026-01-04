@@ -46,13 +46,13 @@ const JoinPage = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-red-700 text-white min-h-11 font-bold hover:bg-red-600 rounded-full text-xl mb-4"
+            className="mb-4 min-h-11 w-full rounded-full bg-red-700 text-xl font-bold text-white hover:bg-red-600"
           >
             {isSubmitting ? "参加中..." : "参加する"}
           </button>
           <Link
             to="/"
-            className="w-full bg-gray-300 min-h-11 font-bold rounded-full text-xl mb-4 flex items-center justify-center"
+            className="mb-4 flex min-h-11 w-full items-center justify-center rounded-full bg-gray-300 text-xl font-bold"
           >
             トップに戻る
           </Link>

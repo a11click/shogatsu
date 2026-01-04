@@ -46,5 +46,11 @@ export default function App() {
     return <div>読み込み中</div>;
   }
 
-  return role ? <Main><GameScreen room={room} role={role} /> </Main>: <p>エラー</p>;
+  return role ? (
+    <Main>
+      <GameScreen room={room} role={role} />{" "}
+    </Main>
+  ) : (
+    <p>エラー</p>
+  );
 }

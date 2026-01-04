@@ -7,7 +7,7 @@ const Button = ({ className, ...props }: ComponentProps<"button">) => (
   <button
     {...props}
     className={clsx(
-      "min-h-24 flex items-center justify-center w-full font-bold text-3xl rounded-full",
+      "flex min-h-24 w-full items-center justify-center rounded-full text-3xl font-bold",
       className,
     )}
   />
@@ -25,7 +25,7 @@ const ActionPanel: React.FC<{
     return (
       <Button
         onClick={() => socket.emit("pound")}
-        className=" text-white bg-blue-700"
+        className="bg-blue-700 text-white"
       >
         つく
       </Button>
@@ -39,7 +39,7 @@ const ActionPanel: React.FC<{
       onPointerCancel={() => socket.emit("turnEnd")}
       onPointerCancelCapture={() => socket.emit("turnEnd")}
       style={{ touchAction: "none" }}
-      className="text-white bg-yellow-700"
+      className="bg-yellow-700 text-white"
     >
       かえす(長押し)
     </Button>

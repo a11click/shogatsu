@@ -8,8 +8,8 @@ const MochiImg: React.FC<{ mochi: Mochi }> = ({ mochi }) => {
       src="/mochi.png"
       alt=""
       className={clsx(
-        "w-1/3 mx-auto",
-        mochi.status === "pounded" && " animate-squash-once",
+        "mx-auto w-1/3",
+        mochi.status === "pounded" && "animate-squash-once",
         mochi.status === "turning" ? "rotate-180 duration-500" : "rotate-0",
       )}
     />

@@ -5,7 +5,7 @@ export const Button = ({ className, ...props }: ComponentProps<"button">) => (
   <button
     {...props}
     className={clsx(
-      " font-bold text-xl min-h-12 flex gap-x-2 items-center justify-center w-full rounded-full",
+      "flex min-h-12 w-full items-center justify-center gap-x-2 rounded-full text-xl font-bold",
       className,
     )}
   />
@@ -17,6 +17,6 @@ export const PrimaryButton = ({
 }: ComponentProps<"button">) => (
   <Button
     {...props}
-    className={clsx("bg-red-700 hover:bg-red-600 text-white", className)}
+    className={clsx("bg-red-700 text-white hover:bg-red-600", className)}
   />
 );

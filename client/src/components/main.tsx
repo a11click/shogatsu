@@ -1,5 +1,10 @@
-import type { ComponentProps } from "react"
+import type { ComponentProps } from "react";
 
-const Main = (props:Omit<ComponentProps<"div">,"className">)=> <div {...props} className="md:shadow-2xl max-w-160 mx-auto min-h-screen px-6 flex items-center justify-center" />
+const Main = (props: Omit<ComponentProps<"div">, "className">) => (
+  <div
+    {...props}
+    className="mx-auto flex min-h-screen max-w-160 items-center justify-center px-6 md:shadow-2xl"
+  />
+);
 
-export default Main 
+export default Main;
