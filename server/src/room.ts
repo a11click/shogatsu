@@ -156,7 +156,10 @@ const createPlayingRoom = (r: ReadyRoom): PlayingRoom => {
   };
 };
 
-export const ready = (room: ReadyRoom, role: PlayerRole): ReadyRoom | PlayingRoom => {
+export const ready = (
+  room: ReadyRoom,
+  role: PlayerRole,
+): ReadyRoom | PlayingRoom => {
   const updatedRoom = updatePlayer(room, role, readyPlayer);
 
   if (
@@ -246,7 +249,11 @@ export const playAgain = (
 };
 
 export type MochitsukiRole = "tsukite" | "ainote";
-export const checkRole = (round: number, actor: PlayerRole, req: MochitsukiRole): boolean => {
+export const checkRole = (
+  round: number,
+  actor: PlayerRole,
+  req: MochitsukiRole,
+): boolean => {
   const currentTsukite = round % 2 !== 0 ? "host" : "guest";
   if (req === "tsukite") {
     return actor === currentTsukite;
