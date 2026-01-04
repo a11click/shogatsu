@@ -8,7 +8,6 @@ import { secureHeaders } from "hono/secure-headers";
 import { csrf } from "hono/csrf";
 
 export const app = new Hono()
-  .use(cors({ origin: CLIENT_ORIGIN, credentials: true }))
   .use(csrf({ origin: CLIENT_ORIGIN }))
   .use(secureHeaders())
 
