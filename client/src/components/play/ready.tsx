@@ -5,7 +5,7 @@ import { Button } from "../button";
 interface ReadyButtonProps {
   isReady: boolean;
 }
-const ReadyButton = ({ isReady }: ReadyButtonProps) => {
+const Ready = ({ isReady }: ReadyButtonProps) => {
   return (
     <Button
       type="button"
@@ -24,4 +24,4 @@ const ReadyButton = ({ isReady }: ReadyButtonProps) => {
   );
 };
 
-export default ReadyButton;
+export default Ready;
