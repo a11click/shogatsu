@@ -12,8 +12,8 @@ import {
   ready,
   reconnectHost,
   removeGuest,
-  type Role,
-  type RoleR,
+  type PlayerRole,
+  type MochitsukiRole,
   type Room,
 } from "./room.js";
 import {
@@ -27,23 +27,26 @@ import { verify } from "hono/jwt";
 import { serveStatic } from "@hono/node-server/serve-static";
 import { Hono } from "hono";
 
-const app = new Hono()
+const app = new Hono();
 
-app.route("/",api)
+app.route("/", api);
 
-if (process.env.NODE_ENV==="production") {
+if (process.env.NODE_ENV === "production") {
   app.use("/*", serveStatic({ root: "../client/dist" }));
-  
-  app.use("*", serveStatic({
-    root:"../client/dist",
-    rewriteRequestPath:()=>"/index.html"
-  }))
+
+  app.use(
+    "*",
+    serveStatic({
+      root: "../client/dist",
+      rewriteRequestPath: () => "/index.html",
+    }),
+  );
 }
 
 const httpServer = serve({
   fetch: app.fetch,
   port: PORT,
-  hostname: process.env.NODE_ENV === 'production' ? '0.0.0.0' : '127.0.0.1',
+  hostname: process.env.NODE_ENV === "production" ? "0.0.0.0" : "127.0.0.1",
 });
 
 const io = new Server<
@@ -72,7 +75,7 @@ export interface InterServerEvents {}
 export interface SocketData {
   roomId: string;
   userId: string;
-  role: Role;
+  role: PlayerRole;
 }
 
 io.use(async (socket, next) => {
@@ -109,8 +112,8 @@ const deleteRoom = (id: string): void => {
 };
 
 const tryGameAction =
-  (req: RoleR, actionFunc: MochitsukiActionFunc) =>
-  (r: Room, role: Role): Room => {
+  (req: MochitsukiRole, actionFunc: MochitsukiActionFunc) =>
+  (r: Room, role: PlayerRole): Room => {
     if (r.status !== "playing") return r;
     if (!checkRole(r.round, role, req)) {
       return r;
@@ -170,15 +173,15 @@ io.on("connection", (socket) => {
   });
 
   socket.on("pound", () => {
-    updateRoom((r) => tryGameAction("pounder", poundMochi)(r, role));
+    updateRoom((r) => tryGameAction("tsukite", poundMochi)(r, role));
   });
 
   socket.on("turnStart", () => {
-    updateRoom((r) => tryGameAction("turner", turnStartMochi)(r, role));
+    updateRoom((r) => tryGameAction("ainote", turnStartMochi)(r, role));
   });
 
   socket.on("turnEnd", () => {
-    updateRoom((room) => tryGameAction("turner", turnEndMochi)(room, role));
+    updateRoom((room) => tryGameAction("ainote", turnEndMochi)(room, role));
   });
 
   socket.on("playAgain", () => {

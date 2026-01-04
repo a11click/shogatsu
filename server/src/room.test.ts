@@ -334,35 +334,35 @@ describe("playAgain", () => {
 describe("checkRole", () => {
   const cases = [
     {
-      args: [1, "host", "pounder"],
+      args: [1, "host", "tsukite"],
       expected: true,
     },
     {
-      args: [1, "host", "turner"],
+      args: [1, "host", "ainote"],
       expected: false,
     },
     {
-      args: [1, "guest", "turner"],
+      args: [1, "guest", "ainote"],
       expected: true,
     },
     {
-      args: [1, "guest", "pounder"],
+      args: [1, "guest", "tsukite"],
       expected: false,
     },
     {
-      args: [2, "host", "turner"],
+      args: [2, "host", "ainote"],
       expected: true,
     },
     {
-      args: [2, "host", "pounder"],
+      args: [2, "host", "tsukite"],
       expected: false,
     },
     {
-      args: [2, "guest", "pounder"],
+      args: [2, "guest", "tsukite"],
       expected: true,
     },
     {
-      args: [6, "guest", "turner"],
+      args: [6, "guest", "ainote"],
       expected: false,
     },
   ] satisfies {

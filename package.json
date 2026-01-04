@@ -6,7 +6,7 @@
     "format": "prettier --write .",
     "lint": "oxlint --fix",
     "build": "pnpm --filter vite-project build && pnpm --filter server build",
-    "start":"pnpm --filter server start"
+    "start": "pnpm --filter server start"
   },
   "packageManager": "pnpm@10.19.0",
   "devDependencies": {

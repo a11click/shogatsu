@@ -80,5 +80,5 @@ const app = new Hono()
     return c.body(null, 201);
   });
 
-export default app
+export default app;
 export type AppType = typeof app;

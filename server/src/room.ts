@@ -43,7 +43,7 @@ interface TwoPlayerRoom extends RoomBase {
   };
 }
 
-export type Role = keyof TwoPlayerRoom["players"];
+export type PlayerRole = keyof TwoPlayerRoom["players"];
 
 interface ReadyRoom extends TwoPlayerRoom {
   status: "ready";
@@ -64,7 +64,7 @@ export interface PlayingRoom extends TwoPlayerRoom {
 
 export type MochitsukiResult = { isOk: true; time: number } | { isOk: false };
 
-interface FinishedRoom extends TwoPlayerRoom {
+export interface FinishedRoom extends TwoPlayerRoom {
   status: "finished";
   players: {
     host: FinishedPlayer;
@@ -126,8 +126,8 @@ export const removeGuest = (room: TwoPlayerRoom): OpenRoom => {
 
 const updatePlayer = <T extends TwoPlayerRoom>(
   room: T,
-  role: Role,
-  mapper: (current: T["players"][Role]) => T["players"][Role],
+  role: PlayerRole,
+  mapper: (current: T["players"][PlayerRole]) => T["players"][PlayerRole],
 ): T => ({
   ...room,
   players: {
@@ -156,7 +156,7 @@ const createPlayingRoom = (r: ReadyRoom): PlayingRoom => {
   };
 };
 
-export const ready = (room: ReadyRoom, role: Role): ReadyRoom | PlayingRoom => {
+export const ready = (room: ReadyRoom, role: PlayerRole): ReadyRoom | PlayingRoom => {
   const updatedRoom = updatePlayer(room, role, readyPlayer);
 
   if (
@@ -229,7 +229,7 @@ const readyRoom = (finishedRoom: FinishedRoom): ReadyRoom => {
 
 export const playAgain = (
   room: FinishedRoom,
-  role: Role,
+  role: PlayerRole,
 ): FinishedRoom | ReadyRoom => {
   const updatedRoom = updatePlayer(room, role, playAgainPlayer);
 
@@ -245,12 +245,12 @@ export const playAgain = (
   return readyRoom(updatedRoom);
 };
 
-export type RoleR = "pounder" | "turner";
-export const checkRole = (round: number, actor: Role, req: RoleR): boolean => {
-  const currentPounder = round % 2 !== 0 ? "host" : "guest";
-  if (req === "pounder") {
-    return actor === currentPounder;
+export type MochitsukiRole = "tsukite" | "ainote";
+export const checkRole = (round: number, actor: PlayerRole, req: MochitsukiRole): boolean => {
+  const currentTsukite = round % 2 !== 0 ? "host" : "guest";
+  if (req === "tsukite") {
+    return actor === currentTsukite;
   } else {
-    return actor !== currentPounder;
+    return actor !== currentTsukite;
   }
 };

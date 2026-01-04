@@ -1,4 +1,4 @@
-import type { PlayingRoom, Role } from "server/src/room";
+import type { PlayingRoom, PlayerRole } from "server/src/room";
 import { socket } from "../socket";
 import type { ComponentProps } from "react";
 import clsx from "clsx";
@@ -15,13 +15,13 @@ const Button = ({ className, ...props }: ComponentProps<"button">) => (
 
 const ActionPanel: React.FC<{
   room: PlayingRoom;
-  role: Role;
+  role: PlayerRole;
 }> = ({ room, role }) => {
-  const isPounder =
+  const isTsukite =
     (role === "host" && room.round % 2 !== 0) ||
     (role === "guest" && room.round % 2 === 0);
 
-  if (isPounder) {
+  if (isTsukite) {
     return (
       <Button
         onClick={() => socket.emit("pound")}
