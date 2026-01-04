@@ -43,6 +43,7 @@ if (process.env.NODE_ENV==="production") {
 const httpServer = serve({
   fetch: app.fetch,
   port: PORT,
+  hostname: process.env.NODE_ENV === 'production' ? '0.0.0.0' : '127.0.0.1',
 });
 
 const io = new Server<
