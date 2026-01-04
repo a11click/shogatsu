@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Heading } from "./heading";
 
 const ListItem = ({ children }: { children: ReactNode }) => (
   <li className=" grid col-span-full grid-cols-subgrid  ">{children}</li>
@@ -12,7 +13,7 @@ const Marker = ({ children }: { children: string }) => (
 const RuleList = () => {
   return (
     <>
-      <h2 className="text-center mb-4 font-bold text-lg">餅つきの遊び方</h2>
+      <Heading className=" mb-4 ">餅つきの遊び方</Heading>
       <ol className="mb-12 bg-gray-50 p-6 grid grid-cols-[auto_1fr] gap-y-6 gap-x-4">
         <ListItem>
           <Marker>1</Marker>

@@ -5,6 +5,7 @@ import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { client } from "../hc";
 import RuleList from "../components/rule-list";
 import Main from "../components/main";
+import { Heading } from "../components/heading";
 
 export const loader = ({ params }: LoaderFunctionArgs) => {
   const code = params.roomId;
@@ -40,7 +41,7 @@ const JoinPage = () => {
     <Main>
       <div className="w-full">
         <RuleList />
-        <h2 className="text-lg font-bold mb-4 text-center">ルームに参加する</h2>
+        <Heading className="mb-4">ルームに参加する</Heading>
         <Form method="post">
           <button
             type="submit"

@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { PrimaryButton } from "./button";
 import { CheckIcon, Square2StackIcon } from "@heroicons/react/24/outline";
+import { Heading } from "./heading";
 
 const useCopy = () => {
   const [isCopied, setIsCopied] = useState(false);
@@ -63,12 +64,12 @@ const PlayerJoinLink = ({ roomId }: { roomId: string }) => {
   const url = `${window.location.origin}/join/${roomId}`;
   return (
     <section className="">
-      <h2 className="text-lg font-bold text-center mb-6 ">プレイヤー招待</h2>
+      <Heading className="mb-6">プレイヤー招待</Heading>
 
       <p className="bg-gray-50 p-2 rounded-sm mb-4">{url}</p>
+      <p className="text-gray-700 text-center mb-8 font-bold">ゲストの参加を待っています</p>
       <CopyButton url={url} />
 
-      <p className="text-gray-700 text-center">ゲストの参加を待っています</p>
     </section>
   );
 };
