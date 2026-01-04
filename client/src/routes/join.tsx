@@ -4,6 +4,7 @@ import { Form, Link, redirect, useNavigation } from "react-router";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { client } from "../hc";
 import RuleList from "../components/rule-list";
+import Main from "../components/main";
 
 export const loader = ({ params }: LoaderFunctionArgs) => {
   const code = params.roomId;
@@ -36,7 +37,7 @@ const JoinPage = () => {
   const isSubmitting = navigation.state === "submitting";
 
   return (
-    <div className="md:shadow-2xl max-w-160 mx-auto min-h-screen px-6 py-8 flex items-center justify-center">
+    <Main>
       <div className="w-full">
         <RuleList />
         <h2 className="text-lg font-bold mb-4 text-center">ルームに参加する</h2>
@@ -56,7 +57,7 @@ const JoinPage = () => {
           </Link>
         </Form>
       </div>
-    </div>
+    </Main>
   );
 };
 

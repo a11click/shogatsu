@@ -5,6 +5,7 @@ import { parseResponse } from "hono/client";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import RuleList from "../components/rule-list";
 import { PrimaryButton } from "../components/button";
+import Main from "../components/main";
 
 export const action = async () => {
   try {
@@ -20,7 +21,7 @@ const NewRoomPage = () => {
   const isSubmitting = navigation.state === "submitting";
 
   return (
-    <div className="max-w-160 min-h-screen items-center justify-center flex w-full mx-auto px-4 border-x border-gray-300">
+    <Main>
       <div className="w-full">
         <h1 className="text-2xl font-bold text-center mb-8 font-serif">
           お正月餅つきタイムアタック
@@ -39,7 +40,7 @@ const NewRoomPage = () => {
           </PrimaryButton>
         </Form>
       </div>
-    </div>
+    </Main>
   );
 };
 

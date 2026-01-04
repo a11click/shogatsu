@@ -5,6 +5,7 @@ import { client } from "../hc";
 import { useLoaderData } from "react-router";
 import { socket } from "../socket";
 import { GameScreen } from "../components/play/play";
+import Main from "../components/main";
 
 export const loader = async () => {
   const res = await parseResponse(client.api.auth.role.$get());
@@ -45,5 +46,5 @@ export default function App() {
     return <div>読み込み中</div>;
   }
 
-  return role ? <GameScreen room={room} role={role} /> : <p>エラー</p>;
+  return role ? <Main><GameScreen room={room} role={role} /> </Main>: <p>エラー</p>;
 }

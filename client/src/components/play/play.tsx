@@ -116,8 +116,7 @@ export const GameScreen: React.FC<{ room: Room; role: Role }> = ({
   role,
 }) => {
   return (
-    <section className="h-screen w-full bg-gray-50">
-      <div className="max-w-160 mx-auto h-full bg-white flex flex-col justify-between py-8 px-4">
+  <div className="w-full min-h-dvh">
         <div className="flex flex-col gap-y-4">
           <GameHeader room={room} />
 
@@ -136,6 +135,5 @@ export const GameScreen: React.FC<{ room: Room; role: Role }> = ({
           )}
         </div>
       </div>
-    </section>
   );
 };

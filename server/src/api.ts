@@ -49,7 +49,7 @@ export const app = new Hono()
     setCookie(c, "room_id", token, {
       httpOnly: true,
       secure: true,
-      sameSite: "None",
+      sameSite: "Strict",
       path: "/",
       maxAge: 60 * 60,
     });
@@ -73,7 +73,7 @@ export const app = new Hono()
     setCookie(c, "room_id", token, {
       httpOnly: true,
       secure: true,
-      sameSite: "None",
+      sameSite: "Strict",
       path: "/",
       maxAge: 60 * 60,
     });
