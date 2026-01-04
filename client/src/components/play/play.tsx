@@ -116,8 +116,8 @@ export const GameScreen: React.FC<{ room: Room; role: Role }> = ({
   role,
 }) => {
   return (
-  <div className="w-full min-h-dvh">
-        <div className="flex flex-col gap-y-4">
+  <div className="w-full h-full flex flex-col gap-y-8 min-h-dvh py-8">
+     
           <GameHeader room={room} />
 
           {room.status === "playing" ? (
@@ -125,7 +125,6 @@ export const GameScreen: React.FC<{ room: Room; role: Role }> = ({
           ) : (
             <img src="/mochi.png" className="mx-auto w-1/3" />
           )}
-        </div>
 
         <div className="mt-auto">
           {room.status === "playing" ? (
