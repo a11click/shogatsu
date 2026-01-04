@@ -124,12 +124,10 @@ const tryGameAction =
   };
 
 io.on("connection", (socket) => {
-  console.log(`Connected: ${socket.data.userId}`);
   const { roomId, role, userId } = socket.data;
 
   if (role === "guest") {
     const room = getRoom(roomId);
-    console.log("guest connect", room);
     if (!room || room.status !== "open") {
       socket.disconnect();
       return;
@@ -153,7 +151,6 @@ io.on("connection", (socket) => {
       const newRoom = createRoom(roomId, userId);
       saveRoom(newRoom);
       socket.join(roomId);
-      console.log("created", roomMap);
 
       io.to(roomId).emit("room", newRoom);
     }
@@ -197,7 +194,6 @@ io.on("connection", (socket) => {
     const closeRoom = () => {
       deleteRoom(roomId);
       io.in(roomId).disconnectSockets(true);
-      console.log("deleted", roomMap);
     };
 
     const saveAndBroadcast = (updatedRoom: Room) => {

@@ -25,7 +25,6 @@ const ReadyScreen = ({ isReady, role }: ReadyScreenProps) => {
       <Button
         type="button"
         onClick={() => {
-          console.log("ready click");
           socket.emit("ready");
         }}
         className={clsx(

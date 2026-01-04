@@ -28,8 +28,6 @@ export const action = async ({ params }: ActionFunctionArgs) => {
 
     return redirect(`/play`);
   } catch (error) {
-    console.error(error);
-
     return null;
   }
 };

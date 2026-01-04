@@ -18,7 +18,7 @@ export default function App() {
   const [room, setRoom] = useState<Room | null>(null);
 
   useEffect(() => {
-    const onConnect = () => console.log("接続");
+    const onConnect = () => {};
     const onRoom = (r: Room) => {
       setRoom(r);
     };

@@ -24,7 +24,6 @@ const useCopy = () => {
 
       return true;
     } catch (error) {
-      console.error("Copy failed", error);
       setIsCopied(false);
       return false;
     }

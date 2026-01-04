@@ -32,7 +32,6 @@ const PlayAgainButton = ({ isPlayAgain }: { isPlayAgain: boolean }) => {
     <Button
       type="button"
       onClick={() => {
-        console.log("ready click");
         socket.emit("playAgain");
       }}
       className={clsx(

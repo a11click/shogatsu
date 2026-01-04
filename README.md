@@ -2,19 +2,18 @@
 
 ## 構成
 
-* `/client` React Router のSPA
-* `/server` API と Socket関連
-  * `/mochi.ts`: 餅
-  * `/room.ts`: 部屋
-
+- `/client` React Router のSPA
+- `/server` API と Socket関連
+  - `/mochi.ts`: 餅
+  - `/room.ts`: 部屋
 
 ## コマンド
 
-* ビルド
+- ビルド
   ```
   pnpm build
   ```
-* 起動
+- 起動
   ```
   pnpm start
   ```
