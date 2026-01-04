@@ -1,18 +1,13 @@
 {
   "name": "a",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write .",
     "lint": "oxlint --fix",
     "build": "pnpm --filter vite-project build && pnpm --filter server build",
-    "build:render": "pnpm --filter vite-project install && pnpm --filter vite-project build && pnpm --filter server install && mkdir -p server/public && cp -r client/dist/* server/public"
+    "start":"pnpm --filter server start"
   },
-  "keywords": [],
-  "author": "",
-  "license": "UNLICENSED",
   "packageManager": "pnpm@10.19.0",
   "devDependencies": {
     "oxlint": "^1.36.0",
