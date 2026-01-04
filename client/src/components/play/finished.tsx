@@ -1,6 +1,10 @@
-import type { FinishedRoom, MochitsukiResult, PlayerRole } from "server/src/room";
+import type {
+  FinishedRoom,
+  MochitsukiResult,
+  PlayerRole,
+} from "server/src/room";
 import { socket } from "../../socket";
-import { Button} from "../button";
+import { Button } from "../button";
 import clsx from "clsx";
 import type { MouseEventHandler } from "react";
 import { client } from "../../hc";
@@ -37,7 +41,7 @@ const PlayAgainButton = ({ isPlayAgain }: { isPlayAgain: boolean }) => {
           : "bg-red-700 text-white hover:bg-red-600",
       )}
     >
-      準備OK
+      もう1回
     </Button>
   );
 };

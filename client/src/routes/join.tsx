@@ -6,6 +6,7 @@ import { client } from "../hc";
 import RuleList from "../components/rule-list";
 import Main from "../components/main";
 import { Heading } from "../components/heading";
+import { PrimaryButton } from "../components/button";
 
 export const loader = ({ params }: LoaderFunctionArgs) => {
   const code = params.roomId;
@@ -43,16 +44,16 @@ const JoinPage = () => {
         <RuleList />
         <Heading className="mb-4">ルームに参加する</Heading>
         <Form method="post">
-          <button
+          <PrimaryButton
             type="submit"
             disabled={isSubmitting}
-            className="mb-4 min-h-11 w-full rounded-full bg-red-700 text-xl font-bold text-white hover:bg-red-600"
+            className="mb-4 hover:scale-105 duration-200 transition-transform ease-out"
           >
             {isSubmitting ? "参加中..." : "参加する"}
-          </button>
+          </PrimaryButton>
           <Link
             to="/"
-            className="mb-4 flex min-h-11 w-full items-center justify-center rounded-full bg-gray-300 text-xl font-bold"
+            className="mb-4 flex min-h-11 w-full items-center justify-center rounded-full bg-gray-300 text-xl font-bold hover:scale-105 duration-200 transition-transform ease-out"
           >
             トップに戻る
           </Link>

@@ -33,7 +33,7 @@ const NewRoomPage = () => {
           <PrimaryButton
             type="submit"
             disabled={isSubmitting}
-            className="flex min-h-12 w-full items-center justify-center gap-x-2 rounded-full bg-red-700 text-xl font-bold text-white hover:bg-red-600"
+            className="hover:scale-105 duration-200 transition-transform ease-out"
           >
             {isSubmitting ? "作成中..." : "ルームを作成"}
             <ArrowRightIcon className="size-6" />

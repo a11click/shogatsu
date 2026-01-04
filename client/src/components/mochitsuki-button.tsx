@@ -7,7 +7,7 @@ const Button = ({ className, ...props }: ComponentProps<"button">) => (
   <button
     {...props}
     className={clsx(
-      "flex min-h-24 w-full items-center justify-center rounded-full text-3xl font-bold",
+      "flex min-h-24 w-full items-center justify-center rounded-full text-3xl font-bold select-none",
       className,
     )}
   />

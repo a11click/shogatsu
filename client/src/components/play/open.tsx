@@ -51,7 +51,6 @@ const CopyButton = ({ url }: { url: string }) => {
         </>
       ) : (
         <>
-          {" "}
           <Square2StackIcon className="size-6" />
           <span> コピー</span>
         </>
@@ -66,7 +65,7 @@ const PlayerJoinLink = ({ roomId }: { roomId: string }) => {
     <>
       <Heading className="mb-6">プレイヤー招待</Heading>
 
-      <p className="mb-4 rounded-sm bg-gray-50 p-2">{url}</p>
+      <p className="mb-4 rounded-sm bg-gray-50 p-2 select-all">{url}</p>
       <p className="mb-8 text-center font-bold text-gray-700">
         ゲストの参加を待っています
       </p>

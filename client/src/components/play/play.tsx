@@ -1,8 +1,14 @@
 import {
+  ArrowLeftStartOnRectangleIcon,
   ArrowPathRoundedSquareIcon,
   ClockIcon,
 } from "@heroicons/react/24/outline";
-import type { Room, PlayerRole , MochitsukiRole, PlayingRoom,} from "server/src/room";
+import type {
+  Room,
+  PlayerRole,
+  MochitsukiRole,
+  PlayingRoom,
+} from "server/src/room";
 import { useState, useEffect } from "react";
 import Open from "./open";
 import MochiImg from "../mochi-img";
@@ -12,9 +18,14 @@ import PlayButtonPanel from "../mochitsuki-button";
 import type { Mochi } from "server/src/mochi";
 import clsx from "clsx";
 import { getMochitsukiRole } from "../../room";
+import { Button } from "../button";
+import { client } from "../../hc";
+import { useNavigate } from "react-router";
 
-
-const ActionPanel: React.FC<{ room: Exclude<Room,PlayingRoom>; role: PlayerRole }> = ({ room, role }) => {
+const ActionPanel: React.FC<{
+  room: Exclude<Room, PlayingRoom>;
+  role: PlayerRole;
+}> = ({ room, role }) => {
   switch (room.status) {
     case "open":
       return <Open roomId={room.id} />;
@@ -102,6 +113,7 @@ const NextAction = ({
     turned: "つく！",
     failed_turn: "かえす！！",
   } satisfies Record<Mochi["status"], string>;
+  
   const currentTurn =
     status === "initial" || status === "turned" ? "tsukite" : "ainote";
 
@@ -123,7 +135,10 @@ const NextAction = ({
   );
 };
 
-const GameHeader: React.FC<{ room: Room; role: PlayerRole }> = ({ room, role }) => {
+const GameHeader: React.FC<{ room: Room; role: PlayerRole }> = ({
+  room,
+  role,
+}) => {
   const mochiTsukiRole =
     room.status === "playing" ? getMochitsukiRole(room.round, role) : undefined;
   const displayCount =
@@ -156,12 +171,33 @@ const GameHeader: React.FC<{ room: Room; role: PlayerRole }> = ({ room, role }) 
   );
 };
 
+const LeaveDiv = () => {
+  const navigate = useNavigate();
+
+  const handleClick = async () => {
+    await client.api.auth.role.$delete();
+    navigate("/");
+  };
+
+  return (
+    <div className="bg-yellow-100 p-4">
+      <p className="mb-6 text-center font-bold text-gray-900">
+        ホストが退出しました
+      </p>
+      <Button className="bg-yellow-500" onClick={handleClick}>
+        退出 <ArrowLeftStartOnRectangleIcon className="size-6" />{" "}
+      </Button>
+    </div>
+  );
+};
+
 export const GameScreen: React.FC<{ room: Room; role: PlayerRole }> = ({
   room,
   role,
 }) => {
   return (
     <div className="flex h-full min-h-dvh w-full flex-col gap-y-8 py-8">
+      {!room.players.host.isConnected && role === "guest" && <LeaveDiv />}
       <GameHeader room={room} role={role} />
 
       {room.status === "playing" ? (
