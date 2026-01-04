@@ -47,13 +47,13 @@ const JoinPage = () => {
           <PrimaryButton
             type="submit"
             disabled={isSubmitting}
-            className="mb-4 hover:scale-105 duration-200 transition-transform ease-out"
+            className="mb-4 transition-transform duration-200 ease-out hover:scale-105"
           >
             {isSubmitting ? "参加中..." : "参加する"}
           </PrimaryButton>
           <Link
             to="/"
-            className="mb-4 flex min-h-11 w-full items-center justify-center rounded-full bg-gray-300 text-xl font-bold hover:scale-105 duration-200 transition-transform ease-out"
+            className="mb-4 flex min-h-11 w-full items-center justify-center rounded-full bg-gray-300 text-xl font-bold transition-transform duration-200 ease-out hover:scale-105"
           >
             トップに戻る
           </Link>

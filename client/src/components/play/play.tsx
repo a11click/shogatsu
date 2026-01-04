@@ -113,7 +113,7 @@ const NextAction = ({
     turned: "つく！",
     failed_turn: "かえす！！",
   } satisfies Record<Mochi["status"], string>;
-  
+
   const currentTurn =
     status === "initial" || status === "turned" ? "tsukite" : "ainote";
 

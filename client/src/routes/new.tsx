@@ -33,7 +33,7 @@ const NewRoomPage = () => {
           <PrimaryButton
             type="submit"
             disabled={isSubmitting}
-            className="hover:scale-105 duration-200 transition-transform ease-out"
+            className="transition-transform duration-200 ease-out hover:scale-105"
           >
             {isSubmitting ? "作成中..." : "ルームを作成"}
             <ArrowRightIcon className="size-6" />
