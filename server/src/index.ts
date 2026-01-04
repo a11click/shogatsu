@@ -1,5 +1,5 @@
 import { serve } from "@hono/node-server";
-import { app } from "./api.js";
+import api from "./api.js";
 import { parse } from "cookie";
 import { Server } from "socket.io";
 import {
@@ -25,18 +25,20 @@ import {
 import { JWT_SECRET, PORT, tokenSchema } from "./schema.js";
 import { verify } from "hono/jwt";
 import { serveStatic } from "@hono/node-server/serve-static";
-import { readFile } from "fs/promises";
+import { Hono } from "hono";
 
-app.use("/*", serveStatic({ root: "./public" }));
+const app = new Hono()
 
-app.get("*", async (c) => {
-  try {
-    const html = await readFile("./public/index.html", "utf-8");
-    return c.html(html);
-  } catch (e) {
-    return c.notFound();
-  }
-});
+app.route("/",api)
+
+if (process.env.NODE_ENV==="production") {
+  app.use("/*", serveStatic({ root: "../client/dist" }));
+  
+  app.use("*", serveStatic({
+    root:"../client/dist",
+    rewriteRequestPath:()=>"/index.html"
+  }))
+}
 
 const httpServer = serve({
   fetch: app.fetch,

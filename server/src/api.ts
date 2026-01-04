@@ -6,7 +6,7 @@ import { HTTPException } from "hono/http-exception";
 import { secureHeaders } from "hono/secure-headers";
 import { csrf } from "hono/csrf";
 
-export const app = new Hono()
+const app = new Hono()
   .use(csrf({ origin: CLIENT_ORIGIN }))
   .use(secureHeaders())
 
@@ -80,4 +80,5 @@ export const app = new Hono()
     return c.body(null, 201);
   });
 
+export default app
 export type AppType = typeof app;
