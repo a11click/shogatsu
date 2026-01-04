@@ -22,7 +22,7 @@ import {
   turnStartMochi,
   type MochitsukiActionFunc,
 } from "./mochi.js";
-import { CLIENT_ORIGIN, JWT_SECRET, PORT, tokenSchema } from "./schema.js";
+import { JWT_SECRET, PORT, tokenSchema } from "./schema.js";
 import { verify } from "hono/jwt";
 import { serveStatic } from "@hono/node-server/serve-static";
 import { readFile } from "fs/promises";

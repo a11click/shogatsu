@@ -1,6 +1,5 @@
 import { Hono } from "hono";
 import { deleteCookie, setCookie } from "hono/cookie";
-import { cors } from "hono/cors";
 import { jwt, sign } from "hono/jwt";
 import { CLIENT_ORIGIN, JWT_SECRET, tokenSchema } from "./schema.js";
 import { HTTPException } from "hono/http-exception";
