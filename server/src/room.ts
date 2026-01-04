@@ -41,6 +41,7 @@ interface TwoPlayerRoom extends RoomBase {
     host: Player;
     guest: Player;
   };
+  best?: number;
 }
 
 export type PlayerRole = keyof TwoPlayerRoom["players"];
@@ -175,7 +176,13 @@ const finishedRoom = (
   room: PlayingRoom,
   result: MochitsukiResult,
 ): FinishedRoom => {
-  const { mochi: _mochi, ...r } = room;
+  const { mochi: _mochi, best, ...r } = room;
+
+  const newBest =
+    result.isOk && (best === undefined || result.time < best)
+      ? result.time
+      : best;
+
   return {
     ...r,
     status: "finished",
@@ -184,6 +191,7 @@ const finishedRoom = (
       guest: finishedPlayer(room.players.guest),
     },
     result,
+    best: newBest,
   };
 };
 

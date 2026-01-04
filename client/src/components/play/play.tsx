@@ -17,7 +17,7 @@ import ReadyScreen from "./ready";
 import PlayButtonPanel from "../mochitsuki-button";
 import type { Mochi } from "server/src/mochi";
 import clsx from "clsx";
-import { getMochitsukiRole } from "../../room";
+import { formatDuration, getMochitsukiRole } from "../../util";
 import { Button } from "../button";
 import { client } from "../../hc";
 import { useNavigate } from "react-router";
@@ -39,12 +39,6 @@ const ActionPanel: React.FC<{
     default:
       throw new Error(room satisfies never);
   }
-};
-
-const formatDuration = (totalSeconds: number): string => {
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = totalSeconds % 60;
-  return `${minutes}:${String(seconds).padStart(2, "0")}`;
 };
 
 const GameTimer: React.FC<{ room: Room }> = ({ room }) => {
@@ -81,7 +75,9 @@ const GameTimer: React.FC<{ room: Room }> = ({ room }) => {
   return (
     <span className="flex items-center gap-x-2">
       <ClockIcon className="size-6 text-gray-500" />
-      <span className="tabular-nums">{formatDuration(elapsedSeconds)}</span>
+      <span className="text-xl tabular-nums">
+        {formatDuration(elapsedSeconds)}
+      </span>
     </span>
   );
 };
@@ -148,7 +144,7 @@ const GameHeader: React.FC<{ room: Room; role: PlayerRole }> = ({
 
   return (
     <header className="mb-8">
-      <div className="mb-6 flex items-center justify-center font-bold">
+      <div className="mb-2 flex items-center justify-center font-bold">
         <div className="flex items-end gap-x-6">
           {mochiTsukiRole && <MochitsukiRole mochitsukiRole={mochiTsukiRole} />}
           <GameTimer room={room} />
@@ -159,6 +155,7 @@ const GameHeader: React.FC<{ room: Room; role: PlayerRole }> = ({
           </p>
         </div>
       </div>
+      <span className="mx-auto mb-6 block w-fit font-bold text-green-500">{`BEST: ${room.status !== "open" && room.best ? formatDuration(room.best / 1000) : "-"}`}</span>
       {room.status === "playing" ? (
         <NextAction
           status={room.mochi.status}

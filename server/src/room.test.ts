@@ -161,7 +161,6 @@ describe("applyGameAction", () => {
             start: 0,
           },
         },
-
         5000,
         turnEndMochi,
       ],
@@ -177,6 +176,44 @@ describe("applyGameAction", () => {
           isOk: true,
           time: 5000,
         },
+        best: 5000,
+      },
+    },
+    {
+      name: "finished best5000",
+      args: [
+        {
+          id: "1",
+          status: "playing",
+          round: 1,
+          players: {
+            host: { id: "1", isConnected: true },
+            guest: { id: "2", isConnected: true },
+          },
+          mochi: {
+            status: "turning",
+            count: 29,
+            turnStart: 0,
+            start: 0,
+          },
+          best: 6000,
+        },
+        5000,
+        turnEndMochi,
+      ],
+      expected: {
+        id: "1",
+        status: "finished",
+        round: 1,
+        players: {
+          host: { id: "1", isPlayAgain: false, isConnected: true },
+          guest: { id: "2", isPlayAgain: false, isConnected: true },
+        },
+        result: {
+          isOk: true,
+          time: 5000,
+        },
+        best: 5000,
       },
     },
     {
@@ -211,6 +248,42 @@ describe("applyGameAction", () => {
         result: {
           isOk: false,
         },
+        best: undefined,
+      },
+    },
+    {
+      name: "fail b",
+      args: [
+        {
+          id: "1",
+          status: "playing",
+          round: 1,
+          players: {
+            host: { id: "1", isConnected: true },
+            guest: { id: "2", isConnected: true },
+          },
+          mochi: {
+            status: "pounded",
+            count: 1,
+            start: 0,
+          },
+          best: 5000,
+        },
+        1,
+        poundMochi,
+      ],
+      expected: {
+        id: "1",
+        status: "finished",
+        round: 1,
+        players: {
+          host: { id: "1", isPlayAgain: false, isConnected: true },
+          guest: { id: "2", isPlayAgain: false, isConnected: true },
+        },
+        result: {
+          isOk: false,
+        },
+        best: 5000,
       },
     },
   ] satisfies {

@@ -10,6 +10,7 @@ import type { MouseEventHandler } from "react";
 import { client } from "../../hc";
 import { useNavigate } from "react-router";
 import { Heading } from "../heading";
+import { formatDuration } from "../../util";
 
 const ResultDiv: React.FC<{ result: MochitsukiResult }> = ({ result }) => {
   return (
@@ -17,7 +18,7 @@ const ResultDiv: React.FC<{ result: MochitsukiResult }> = ({ result }) => {
       <Heading className="mb-2">結果</Heading>
       {result.isOk ? (
         <p className="text-center font-mono text-2xl text-green-600">
-          {result.time / 1000}秒
+          {`${formatDuration(result.time / 1000)}`}
         </p>
       ) : (
         <p className="text-center text-xl font-bold text-red-500">失敗...</p>
