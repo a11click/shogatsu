@@ -315,6 +315,7 @@ describe("playAgain", () => {
             isOk: true,
             time: 5000,
           },
+          best: 1,
         },
         "host",
       ],
@@ -330,6 +331,7 @@ describe("playAgain", () => {
           isOk: true,
           time: 5000,
         },
+        best: 1,
       },
     },
     {
@@ -347,6 +349,7 @@ describe("playAgain", () => {
             isOk: true,
             time: 5000,
           },
+          best: 1,
         },
         "guest",
       ],
@@ -362,6 +365,7 @@ describe("playAgain", () => {
           isOk: true,
           time: 5000,
         },
+        best: 1,
       },
     },
     {
@@ -379,6 +383,7 @@ describe("playAgain", () => {
             isOk: true,
             time: 5000,
           },
+          best: 1,
         },
         "guest",
       ],
@@ -390,6 +395,7 @@ describe("playAgain", () => {
           host: { id: "1", isReady: false, isConnected: true },
           guest: { id: "2", isReady: false, isConnected: true },
         },
+        best: 1,
       },
     },
   ] satisfies {
