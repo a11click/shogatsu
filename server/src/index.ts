@@ -84,7 +84,7 @@ io.use(async (socket, next) => {
     const token = cookie["room_id"];
     if (!token) return next(new Error("Authentication error"));
 
-    const payload = await verify(token, JWT_SECRET);
+    const payload = await verify(token, JWT_SECRET, "HS256");
     const user = tokenSchema.parse(payload);
 
     socket.data = {

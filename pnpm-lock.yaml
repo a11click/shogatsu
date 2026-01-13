@@ -26,8 +26,8 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       hono:
-        specifier: ^4.11.3
-        version: 4.11.3
+        specifier: ^4.11.4
+        version: 4.11.4
       react:
         specifier: ^19.2.0
         version: 19.2.3
@@ -72,57 +72,20 @@ importers:
         specifier: ^7.2.4
         version: 7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)
 
-  my-app:
-    dependencies:
-      "@hono/node-server":
-        specifier: ^1.19.6
-        version: 1.19.7(hono@4.11.3)
-      "@hono/zod-validator":
-        specifier: ^0.7.6
-        version: 0.7.6(hono@4.11.3)(zod@4.3.4)
-      cookie:
-        specifier: ^1.1.1
-        version: 1.1.1
-      hono:
-        specifier: ^4.11.3
-        version: 4.11.3
-      socket.io:
-        specifier: ^4.8.3
-        version: 4.8.3
-      zod:
-        specifier: ^4.2.1
-        version: 4.3.4
-    devDependencies:
-      "@types/node":
-        specifier: ^20.11.17
-        version: 20.19.27
-      oxlint:
-        specifier: ^1.36.0
-        version: 1.36.0
-      tsx:
-        specifier: ^4.7.1
-        version: 4.21.0
-      typescript:
-        specifier: ^5.8.3
-        version: 5.9.3
-      vitest:
-        specifier: ^4.0.16
-        version: 4.0.16(@types/node@20.19.27)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)
-
   server:
     dependencies:
       "@hono/node-server":
         specifier: ^1.19.6
-        version: 1.19.7(hono@4.11.3)
+        version: 1.19.7(hono@4.11.4)
       "@hono/zod-validator":
         specifier: ^0.7.6
-        version: 0.7.6(hono@4.11.3)(zod@4.3.4)
+        version: 0.7.6(hono@4.11.4)(zod@4.3.4)
       cookie:
         specifier: ^1.1.1
         version: 1.1.1
       hono:
-        specifier: ^4.11.3
-        version: 4.11.3
+        specifier: ^4.11.4
+        version: 4.11.4
       socket.io:
         specifier: ^4.8.3
         version: 4.8.3
@@ -145,61 +108,6 @@ importers:
       vitest:
         specifier: ^4.0.16
         version: 4.0.16(@types/node@20.19.27)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)
-
-  vite-project2:
-    dependencies:
-      "@heroicons/react":
-        specifier: ^2.2.0
-        version: 2.2.0(react@19.2.3)
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
-      hono:
-        specifier: ^4.11.3
-        version: 4.11.3
-      my-app:
-        specifier: workspace:*
-        version: link:../my-app
-      react:
-        specifier: ^19.2.0
-        version: 19.2.3
-      react-dom:
-        specifier: ^19.2.0
-        version: 19.2.3(react@19.2.3)
-      react-router:
-        specifier: ^7.11.0
-        version: 7.11.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      socket.io-client:
-        specifier: ^4.8.3
-        version: 4.8.3
-    devDependencies:
-      "@tailwindcss/vite":
-        specifier: ^4.1.18
-        version: 4.1.18(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0))
-      "@types/node":
-        specifier: ^24.10.1
-        version: 24.10.4
-      "@types/react":
-        specifier: ^19.2.5
-        version: 19.2.7
-      "@types/react-dom":
-        specifier: ^19.2.3
-        version: 19.2.3(@types/react@19.2.7)
-      "@vitejs/plugin-react":
-        specifier: ^5.1.1
-        version: 5.1.2(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0))
-      globals:
-        specifier: ^16.5.0
-        version: 16.5.0
-      tailwindcss:
-        specifier: ^4.1.18
-        version: 4.1.18
-      typescript:
-        specifier: ~5.9.3
-        version: 5.9.3
-      vite:
-        specifier: ^7.2.4
-        version: 7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)
 
 packages:
   "@babel/code-frame@7.27.1":
@@ -1380,10 +1288,10 @@ packages:
         integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==,
       }
 
-  hono@4.11.3:
+  hono@4.11.4:
     resolution:
       {
-        integrity: sha512-PmQi306+M/ct/m5s66Hrg+adPnkD5jiO6IjA7WhWw0gSBSo1EcRegwuI1deZ+wd5pzCGynCcn2DprnE4/yEV4w==,
+        integrity: sha512-U7tt8JsyrxSRKspfhtLET79pU8K+tInj5QZXs1jSugO1Vq5dFj3kmZsRldo29mTBfcjDRVRXrEZ6LS63Cog9ZA==,
       }
     engines: { node: ">=16.9.0" }
 
@@ -2214,13 +2122,13 @@ snapshots:
     dependencies:
       react: 19.2.3
 
-  "@hono/node-server@1.19.7(hono@4.11.3)":
+  "@hono/node-server@1.19.7(hono@4.11.4)":
     dependencies:
-      hono: 4.11.3
+      hono: 4.11.4
 
-  "@hono/zod-validator@0.7.6(hono@4.11.3)(zod@4.3.4)":
+  "@hono/zod-validator@0.7.6(hono@4.11.4)(zod@4.3.4)":
     dependencies:
-      hono: 4.11.3
+      hono: 4.11.4
       zod: 4.3.4
 
   "@jridgewell/gen-mapping@0.3.13":
@@ -2644,7 +2552,7 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
-  hono@4.11.3: {}
+  hono@4.11.4: {}
 
   jiti@2.6.1: {}
 

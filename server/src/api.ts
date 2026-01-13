@@ -12,7 +12,7 @@ const app = new Hono()
 
   .get(
     "/api/auth/role",
-    jwt({ secret: JWT_SECRET, cookie: "room_id" }),
+    jwt({ secret: JWT_SECRET, cookie: "room_id", alg: "HS256" }),
     async (c) => {
       const parsed = tokenSchema.safeParse(c.get("jwtPayload"));
       if (!parsed.success) {
@@ -25,7 +25,7 @@ const app = new Hono()
 
   .delete(
     "/api/auth/role",
-    jwt({ secret: JWT_SECRET, cookie: "room_id" }),
+    jwt({ secret: JWT_SECRET, cookie: "room_id", alg: "HS256" }),
     async (c) => {
       deleteCookie(c, "room_id");
 
@@ -44,6 +44,7 @@ const app = new Hono()
         exp: Math.floor(Date.now() / 1000) + 60 * 60,
       },
       JWT_SECRET,
+      "HS256",
     );
     setCookie(c, "room_id", token, {
       httpOnly: true,
@@ -68,6 +69,7 @@ const app = new Hono()
         exp: Math.floor(Date.now() / 1000) + 60 * 60,
       },
       JWT_SECRET,
+      "HS256",
     );
     setCookie(c, "room_id", token, {
       httpOnly: true,
